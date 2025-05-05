@@ -7,9 +7,8 @@ import Image from "next/image";
 export const Hero = () => {
   return (
     <section className="pt-8 md:pt-5 pb-20 md:pb-10 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183EC2,#EAEEFE_100%)] overflow-x-clip">
-      <div className="px-5 md:w-[678px]">
+      <div className="px-4 md:w-[678px]">
         <div className="md:flex items-center ">
-        <div>
           <div className="text-sm inline-flex border border-[#222]/10 px-3 py-1 ml-2 rounded-lg tracking-tight ">
           Version 2.0 is here
           </div>
@@ -28,7 +27,6 @@ export const Hero = () => {
               <FaArrowRightLong className="h-5 w-5 pl-1" />
             </button>
           </div>
-        </div>
         <div className="mt-20 md:mt-0 md:h-[448px] md:flex relative">
           <Image src={cogImage} 
           alt="Cog image" 

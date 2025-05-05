@@ -8,6 +8,7 @@ import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
 import Image from "next/image";
+import { twMerge } from "tailwind-merge";
 
 const testimonials = [
   {
@@ -71,9 +72,9 @@ const secondColumn = testimonials.slice(3, 6)
 const thirdColumn = testimonials.slice(6, 9)
 
 
-const TestimonialsColumn = (pros: {testimonials: typeof testimonials }) => (
-  <div className="flex flex-col gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
-        {firstColumn.map(({text, imageSrc, name, username}, index) => (
+const TestimonialsColumn = (props: {className?: string; testimonials: typeof testimonials }) => (
+  <div className={twMerge("flex flex-col gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]",  props.className)}>
+        {props.testimonials.map(({text, imageSrc, name, username}, index) => (
           <div 
           key={index} 
           className="p-10 border border-[#F1F1F1] rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-sm w-full"
@@ -102,15 +103,20 @@ export const Testimonials = () => {
   return (
     <section className="bg-white">
       <div className="px-4">
+        <div className="">
         <div className="flex justify-center">
-        <div className="text-sm inline-flex border border-[#222]/10 px-3 py-1 ml-2 rounded-lg tracking-tight mt-5 ">Testimonials</div>
+        <div className="text-sm text-center border border-[#222]/10 px-3 py-1 ml-2 rounded-lg tracking-tight mt-5 ">Testimonials</div>
         </div>
-        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text mt-5">What ours users say</h2>
+        <h2 className="text-center text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text mt-5">What ours users say</h2>
         <p className="text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E] mt-5">
           From intuitive design to powerful features, our app has become an essential tool for users around the world.
         </p>
+
+        </div>
         <div className="flex justify-center gap-6">
-        
+          <TestimonialsColumn testimonials={firstColumn} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:flex" />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:flex" />
         </div>
       </div>
     </section>
