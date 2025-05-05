@@ -7,6 +7,7 @@ import avatar6 from "@/assets/avatar-6.png";
 import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -65,6 +66,53 @@ const testimonials = [
   },
 ];
 
+const firstColumn = testimonials.slice(0, 3)
+const secondColumn = testimonials.slice(3, 6)
+const thirdColumn = testimonials.slice(6, 9)
+
+
+const TestimonialsColumn = (pros: {testimonials: typeof testimonials }) => (
+  <div className="flex flex-col gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
+        {firstColumn.map(({text, imageSrc, name, username}, index) => (
+          <div 
+          key={index} 
+          className="p-10 border border-[#F1F1F1] rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-sm w-full"
+          >
+            <div>{text}</div>
+
+            <div className="flex items-center gap-2 mt-5">
+              <Image 
+              src={imageSrc} 
+              width={40}
+              height={40}
+              alt={name} 
+              className="h-10 w-10 rounded-full" 
+              />
+              <div className="flex flex-col">
+                <div className="font-medium tracking-tight leading-5">{name}</div>
+                <div className="leading-5 tracking-tight">{username}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+        </div>
+)
+
 export const Testimonials = () => {
-  return null;
+  return (
+    <section className="bg-white">
+      <div className="px-4">
+        <div className="flex justify-center">
+        <div className="text-sm inline-flex border border-[#222]/10 px-3 py-1 ml-2 rounded-lg tracking-tight mt-5 ">Testimonials</div>
+        </div>
+        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text mt-5">What ours users say</h2>
+        <p className="text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E] mt-5">
+          From intuitive design to powerful features, our app has become an essential tool for users around the world.
+        </p>
+        <div className="flex justify-center gap-6">
+        
+        </div>
+      </div>
+    </section>
+  )
 };

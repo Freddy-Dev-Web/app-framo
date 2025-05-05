@@ -1,11 +1,19 @@
 import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
+import { LogoTicker } from "@/sections/LogoTicker";
+import  Pricing  from "@/sections/Pricing";
+import { ProductShowcase } from "@/sections/ProductShowcase";
+import { Testimonials } from "@/sections/Testimonials";
 
 export default function Home() {
   return (
-    < div className="bg-[#eaeefe] antialiased">
+    < main className="bg-[#eaeefe] antialiased">
     <Header />
     <Hero />
-    </div>
+    <LogoTicker />
+    <ProductShowcase />
+    <Pricing />
+    <Testimonials />
+    </main>
   );
 }

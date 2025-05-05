@@ -1,3 +1,7 @@
+import Image from 'next/image';
+import CheckIcon from '../assets/check.svg'
+import { twMerge } from 'tailwind-merge';
+
 const pricingTiers = [
   {
     title: "Free",
@@ -50,6 +54,61 @@ const pricingTiers = [
   },
 ];
 
-export const Pricing = () => {
-  return null;
+ const Pricing = () => {
+  return (
+    <section className="py-24 bg-white">
+      <div className="px-4">
+        <div className="mx-w-[540px] mx-auto">
+        <h2 className="text-center text-3xl md:text-[54px] md:leading-[60px] font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text ">Pricing</h2>
+        <p className="text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E] mt-5">
+          Free forever. Upgrade for Unlimited tasks, better security, and exclusive features.
+        </p>
+        </div>
+        <div className='flex flex-col gap-6 items-center mt-10 lg:flex-row lg:items-end lg:justify-center'>
+          {pricingTiers.map(
+            (
+              {
+                title, 
+                monthlyPrice, 
+                buttonText, 
+                popular, 
+                inverse, 
+                features
+              }, index) => (
+                <div 
+                key={index} 
+                className={twMerge("p-10 border border-[#F1F1F1] rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-sm w-full", inverse === true && "text-white border-white bg-black")}
+                >
+                  <div className="flex justify-between">
+                  <h3 className={twMerge("text-lg font-bold tracking-tighter", inverse === true && 'text-white')}>
+                    {title}
+                  </h3>
+                  {popular === true && (
+                    <div className="inline-flex text-sm px-4 py-1.5 rounded-xl border border-white/20 ">
+                      <span className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFF,#DD7DDF)] text-transparent bg-clip-text">Popular</span>
+                    </div>
+                  )}
+                  </div>
+                  <div className="flex items-baseline gap-1 mt-[30px]">
+                    <span className={twMerge("text-4xl font-bold text-black leading-none", inverse === true && "text-white ")}>${monthlyPrice}</span>
+                    <span className={twMerge("tracking-tight font-bold text-black/50", inverse === true && "text-white/50")}>/month</span>
+                  </div>
+                  <button className={twMerge("px-4 py-2 rounded-lg font-medium items-center justify-center tracking-tight bg-black text-white w-full mt-[30px]", inverse === true && "text-black bg-white")}>{buttonText}</button>
+                  <ul className="flex flex-col gap-5 mt-8">
+                    {features.map((feature, index) => (
+                      <li key={index} className="flex text-sm items-center gap-4">
+                        <Image src={CheckIcon} alt="CheckIcon" className={twMerge("h-6 w-6 text-black", inverse === true && "text-white h-6 w-6")}/>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 };
+
+
+export default Pricing;
