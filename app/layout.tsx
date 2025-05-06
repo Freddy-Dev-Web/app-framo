@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="relative overflow-hidden">
+    <html lang="en" className="relative overflow-x-hidden">
       <body className={twMerge(dmSans.className)}>
         {children}
       </body>
