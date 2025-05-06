@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image';
 import CheckIcon from '../assets/check.svg'
 import { twMerge } from 'tailwind-merge';
