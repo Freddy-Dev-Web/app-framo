@@ -9,7 +9,7 @@ import  { Footer } from "@/sections/Footer";
 
 export default function Home() {
   return (
-    < main className="bg-[#eaeefe] antialiased">
+    < main className="bg-[#eaeefe] antialiased overflow-hidden">
     <Header />
     <Hero />
     <LogoTicker />
