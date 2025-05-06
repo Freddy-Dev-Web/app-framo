@@ -1,6 +1,6 @@
 "use client"
-import Image from 'next/image';
-import CheckIcon from '../assets/check.svg'
+import { FaCheck } from "react-icons/fa6";
+
 import { twMerge } from 'tailwind-merge';
 
 const pricingTiers = [
@@ -98,7 +98,7 @@ const pricingTiers = [
                   <ul className="flex flex-col gap-5 mt-8">
                     {features.map((feature, index) => (
                       <li key={index} className="flex text-sm items-center gap-4">
-                        <Image src={CheckIcon} alt="CheckIcon" className={twMerge("h-6 w-6 text-black", inverse === true && "text-white h-6 w-6")}/>
+                        <FaCheck  className={twMerge("h-6 w-6 text-black", inverse === true && "text-white h-6 w-6")}/>
                         <span>{feature}</span>
                       </li>
                     ))}
